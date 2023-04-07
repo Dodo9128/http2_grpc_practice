@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package person;
+
+service PersonService {
+  rpc FindOne (PersonById) returns (Person) {}
+  rpc FindMany (stream PersonById) returns (stream Person) {}
+}
+
+message PersonById {
+  int32 id = 1;
+}
+
+message Person {
+  string name = 1;
+  int32 id = 2;
+  optional string email = 3;
+}
